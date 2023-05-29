@@ -54,11 +54,17 @@ Define the objective and constraints.
 objective_function = lambda x: np.sum((x.reshape(matrix.shape) - matrix)**2)
 
 constraints = []
+# row and column totals
 for i in range(matrix.shape[0]):
     # row constraint
     constraints.append({'type': 'eq', 'fun': lambda x, i=i: np.sum(x.reshape(matrix.shape)[i, :]) - np.sum(matrix[i, :])})
     # column constraint
     constraints.append({'type': 'eq', 'fun': lambda x, i=i: np.sum(x.reshape(matrix.shape)[:, i]) - np.sum(matrix[:, i])})
+    
+# flows must be positive
+for i in range(matrix.shape[0]):
+    for j in range(matrix.shape[1]):
+        constraints.append({'type': 'ineq', 'fun': lambda x, i=i, j=j: x.reshape(matrix.shape)[i, j] - 0})
 ```
 Create a NetworkFlowSolver instance.
 ```
