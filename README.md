@@ -43,6 +43,14 @@ for i in range(matrix.shape[0]):
 ```
 # Examples
 ## Social Accounting Matrix balancing
+For illustration, one can use the following Social Accounting Matrix (SAM):
+```
+,Household,Corporations,Government,Capital
+Household,0,850,250,200
+Corporations,700,0,550,50
+Government,450,550,0,200
+Capital,300,200,400,0
+```
 Load the SAM from the CSV file.
 ```
 sam_df = pd.read_csv('sam.csv', index_col=0)
