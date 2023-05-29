@@ -16,7 +16,7 @@ class NetworkFlowSolver:
         G = nx.from_numpy_array(self.adjacency_matrix, create_using=nx.DiGraph)
         return G
 
-    def solve(self, method):
+    def solve(self, method = 'SLSQP'):
         initial_guess = np.random.rand(self.adjacency_matrix.size)
         result = minimize(self.objective_function, initial_guess, constraints=self.constraints_list, method=method)
         if result.success:
