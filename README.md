@@ -1,5 +1,5 @@
 # NetworkFlowSolver
-Custom library for solving network flow problems.
+Custom library for solving network flow problems. For now, supports nonlinear objectives only.
 
 # Preliminaries
 Define the objective function.
